@@ -1,0 +1,24 @@
+version: "3.5"
+
+services:
+  postgres:
+    container_name: next_crud
+    image: postgres
+    environment:
+      POSTGRES_USER: tolotra
+      POSTGRES_PASSWORD: tolotra
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5423:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
